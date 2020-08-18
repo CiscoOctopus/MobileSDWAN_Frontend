@@ -1,0 +1,8 @@
+{
+  "appId": "com.example.mobilesdwan",
+  "appName": "mobilesdwan",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}

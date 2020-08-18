@@ -1,0 +1,19 @@
+ion-content ion-toolbar {
+  --background: translucent;
+}
+
+.my-custom-class {
+  --background: #222;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+}
+
+td {
+  border: solid 1px grey;
+}
+ion-button {
+  float: right;
+}
