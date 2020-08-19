@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonLoading,
   IonList, IonItem, IonLabel, IonInput, IonText, IonSelect, IonSelectOption, IonButton, IonImg
 } from '@ionic/react';
@@ -14,7 +14,6 @@ const Connect: React.FC = () => {
   //start timestamp
   let start = new Date().getTime();
   let i = 3;
-  console.log(username, password, addr);
   
   return (
     <IonPage>
@@ -37,9 +36,9 @@ const Connect: React.FC = () => {
             let latency = new Date().getTime() - start;
             d.latency = latency
             i -= 1
-            if( i == 1) {
+            if( i === 0) {
               let node = site[0]
-              site.forEach(e=>{ if(e.latency != -1 && e.latency < node.latency) node = e})
+              site.forEach(e=>{ if(e.latency !== -1 && e.latency < node.latency) node = e})
               setAddr(node.addr)
               setShowLoading(false);
             }
@@ -78,7 +77,7 @@ const Connect: React.FC = () => {
                   ></IonInput>
                 </IonItem>
               </IonList>
-              <IonButton onClick={e=> connect(username, password, addr)}>Connect</IonButton>
+              <IonButton id="connect" onClick={e=> connect(username, password, addr)}>Connect</IonButton>
             </form>
       </IonContent>
     </IonPage>

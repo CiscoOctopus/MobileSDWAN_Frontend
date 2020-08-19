@@ -11,9 +11,11 @@ table {
   text-align: center;
 }
 
-td {
-  border: solid 1px grey;
+td, th {
+  border-bottom: solid 1px grey;
+  line-height: 34px;
 }
+
 ion-button {
   float: right;
 }
