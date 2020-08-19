@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonLoading,
-  IonList, IonItem, IonLabel, IonInput, IonText, IonSelect, IonSelectOption, IonButton, IonImg
+import {
+    IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonLoading,
+    IonList, IonItem, IonLabel, IonInput, IonText, IonSelect, IonSelectOption, IonButton, IonImg, IonFabButton, IonFab,
+    IonIcon
 } from '@ionic/react';
 import './Connect.css';
 import { useSiteSpeed } from '../hooks/useSiteSpeed';
+import {arrowForward} from "ionicons/icons";
 
 const Connect: React.FC = () => {
   const [company, setCompany] = useState<string>();
@@ -90,7 +93,11 @@ const Connect: React.FC = () => {
                   ></IonInput>
                 </IonItem>
               </IonList>
-              <IonButton id="connect" onClick={e=> connect(company, username, password, addr)}>Connect</IonButton>
+              <IonFab vertical="bottom" horizontal="end" slot="fixed">
+                <IonFabButton color="primary"  onClick={e=> connect(company, username, password, addr)}>
+                  <IonIcon icon={arrowForward} />
+                </IonFabButton>
+              </IonFab>
             </form>
       </IonContent>
     </IonPage>
