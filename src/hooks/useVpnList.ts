@@ -22,6 +22,9 @@ export function useVpnList() {
     const deleteVpn = async (vpn: Vpn) => {
         const newVpnList = vpnList.filter(p => p.username !== vpn.username);
         // TODO
+        fetch(VPN_API + '/' + vpn.username, {method: 'DELETE'}).then(response => {
+            console.log(response);
+        });
 
         setVpnList(newVpnList)
     };
