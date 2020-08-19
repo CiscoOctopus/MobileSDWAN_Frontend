@@ -6,6 +6,7 @@ import './Connect.css';
 import { useSiteSpeed } from '../hooks/useSiteSpeed';
 
 const Connect: React.FC = () => {
+  const [company, setCompany] = useState<string>();
   const [username, setUsername] = useState<string>();
   const [password, setPassword] = useState<string>();
   const [addr, setAddr] = useState<string>();
@@ -13,6 +14,7 @@ const Connect: React.FC = () => {
   const [showLoading, setShowLoading] = useState(true);
   //start timestamp
   let start = new Date().getTime();
+  let xx:any = [];
   let i = 3;
   
   return (
@@ -31,9 +33,9 @@ const Connect: React.FC = () => {
           duration={5000}
         />
         { showLoading &&
-          site.map(d=> 
-          <IonImg key={d.name} src={d.src + '?' + start} onIonImgDidLoad={ e=> {
-            let latency = new Date().getTime() - start;
+          site.map((d, pos)=>
+          <IonImg key={d.name} src={d.src + '?' + start} onIonImgWillLoad={() => xx[pos] = new Date().getTime()} onIonImgDidLoad={ e=> {
+            let latency = new Date().getTime() - xx[pos];
             d.latency = latency
             i -= 1
             if( i === 0) {
@@ -60,6 +62,17 @@ const Connect: React.FC = () => {
                   </IonSelect>
                 </IonItem>
                 <IonItem>
+                  <IonLabel position="stacked">Company<IonText color="danger">*</IonText></IonLabel>
+                  <IonSelect value={company}
+                    placeholder="Select Company" 
+                    name="company"
+                    onIonChange={e=>setCompany(e.detail.value)}
+                    >
+                    <IonSelectOption value="apple">APPLE</IonSelectOption>
+                    <IonSelectOption value="ibm">IBM</IonSelectOption>
+                  </IonSelect>
+                </IonItem>
+                <IonItem>
                   <IonLabel position="stacked">User Name<IonText color="danger">*</IonText></IonLabel>
                   <IonInput 
                     name="username" 
@@ -77,7 +90,7 @@ const Connect: React.FC = () => {
                   ></IonInput>
                 </IonItem>
               </IonList>
-              <IonButton id="connect" onClick={e=> connect(username, password, addr)}>Connect</IonButton>
+              <IonButton id="connect" onClick={e=> connect(company, username, password, addr)}>Connect</IonButton>
             </form>
       </IonContent>
     </IonPage>

@@ -12,7 +12,7 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import { square, personOutline } from 'ionicons/icons';
 import Admin from './pages/Admin';
-import Tab3 from './pages/Connect';
+import Connect from './pages/Connect';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -42,7 +42,7 @@ const App: React.FC = () => (
       <IonTabs>
         <IonRouterOutlet>
           <Route path="/admin" component={Admin} exact={true} />
-          <Route path="/connect" component={Tab3} exact={true} />
+          <Route path="/connect" component={Connect} exact={true} />
           <Route path="/" render={() => <Redirect to="/admin" />} exact={true} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
