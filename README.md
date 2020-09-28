@@ -37,7 +37,7 @@ User administration support:
 
 ## Demo Topology
 
-![image](https://github.com/CiscoOctopus/MobileSDWAN_Backend/topo.png)
+![image](https://github.com/CiscoOctopus/MobileSDWAN_Backend/blob/master/topo.png?raw=true)
 
 Note that we support multi-customer in this design, so each customer has it's own VMs under different SDWAN VPN.
 
