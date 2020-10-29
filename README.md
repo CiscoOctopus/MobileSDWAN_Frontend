@@ -1,4 +1,5 @@
 # Mobile SDWAN User admin and Client (Ionic React and Capacitor)
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/CiscoOctopus/MobileSDWAN_Frontend)
 
 Mobile SDWAN PoC Solution:
 
