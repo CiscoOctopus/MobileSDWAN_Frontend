@@ -57,3 +57,6 @@ Since this is a PoC right now, we only support IOS and Android mobile phone with
 4) Run on the web: `ionic serve`.
 5) Run on iOS or Android: See [here](https://ionicframework.com/docs/building/running).
 6) Build and deploy: `ionic build`, and copy all files in build directory to the root of web server.
+
+
+Thank you very much.
