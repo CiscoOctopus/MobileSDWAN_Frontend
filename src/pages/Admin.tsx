@@ -6,7 +6,7 @@ import {
     IonList, IonItem, IonLabel, IonInput, IonText, IonSelect, IonSelectOption, IonActionSheet,
     IonBadge, IonFabButton, IonFab
 } from '@ionic/react';
-import {add, checkmark} from 'ionicons/icons';
+import {add, checkmark, earthOutline} from 'ionicons/icons';
 
 import './Admin.css';
 
@@ -34,19 +34,19 @@ const Tab1: React.FC = () => {
 
     const companies_color: any = {
         "apple":'#C0C0C0',
-        "ibm":'#0CA9EA',
+        "cisco":'#0CA9EA',
 
     };
 
     const companies_logo: any = {
         "apple":logoApple,
-        "ibm":server,
+        "cisco":earthOutline,
 
     };
 
     const companies_badge: any = {
         "apple":"light",
-        "ibm":"primary",
+        "cisco":"primary",
     };
 
     const onSubmit = (data: any) => {
@@ -149,8 +149,8 @@ const Tab1: React.FC = () => {
                                                name="company_name"
                                                onIonChange={e => initialValues.company_name = e.detail.value}
                                     >
-                                        <IonSelectOption value="apple">APPLE</IonSelectOption>
-                                        <IonSelectOption value="ibm">IBM</IonSelectOption>
+                                        <IonSelectOption value="apple">Apple</IonSelectOption>
+                                        <IonSelectOption value="cisco">Cisco</IonSelectOption>
                                     </IonSelect>
                                 </IonItem>
                                 {showError("company_name")}

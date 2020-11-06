@@ -77,8 +77,8 @@ const Connect: React.FC = () => {
                     name="company"
                     onIonChange={e=>setCompany(e.detail.value)}
                     >
-                    <IonSelectOption value="apple">APPLE</IonSelectOption>
-                    <IonSelectOption value="ibm">IBM</IonSelectOption>
+                    <IonSelectOption value="apple">Apple</IonSelectOption>
+                    <IonSelectOption value="cisco">Cisco</IonSelectOption>
                   </IonSelect>
                 </IonItem>
                 <IonItem>
