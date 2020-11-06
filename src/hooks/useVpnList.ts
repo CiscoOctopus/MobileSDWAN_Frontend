@@ -1,9 +1,11 @@
-
-// const PHOTO_STORAGE = "photos";
 import { useState, useEffect } from "react";
 
+/** demo. should moved to config file */
 let VPN_API = "http://109.244.44.194:18080/api/v1/vpn"
 
+/**
+ * perform add new vpn, delete vpn and get vpn details.
+ */
 export function useVpnList() {
     const [vpnList, setVpnList] = useState<Vpn[]>([]);
 
@@ -19,16 +21,18 @@ export function useVpnList() {
         load();
     }, []);
 
+    // delete
     const deleteVpn = async (vpn: Vpn) => {
         const newVpnList = vpnList.filter(p => p.username !== vpn.username);
-        // TODO
+        // use fetch library to perform delete operation
         fetch(VPN_API + '/' + vpn.username, {method: 'DELETE'}).then(response => {
             console.log(response);
         });
-
+        // update vpnList state
         setVpnList(newVpnList)
     };
 
+    // add user
     const addUser = async(vpn: Vpn) => {
         const newVpnList = [vpn, ...vpnList];
         fetch(VPN_API, {
@@ -49,9 +53,10 @@ export function useVpnList() {
     };
 }
 
+// vpn data structure
 export interface Vpn {
     username: string;
     company_name: string;
-    password?: string;
-    devices?: Array<string>;
+    password?: string; // optional
+    devices?: Array<string>; // optional
 }

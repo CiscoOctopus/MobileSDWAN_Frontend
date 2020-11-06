@@ -1,41 +1,22 @@
 import { useState, useEffect } from "react";
 
-// let LATENCY_API = "http://109.244.44.194:18080/api/v1/latency"
-let SERVER_API = "http://109.244.44.194:18080/api/v1/server"
-
+// for demo purposes
 export function useSiteSpeed() {
     const [site, setSite] = useState<Site[]>([])
-    // const LABELS:any = {'ASABJ': 'Bei Jing', 'ASASH': 'Shang Hai', 'ASASZ': 'Shen Zhen'}
-
+    // initialize
     useEffect(() => {
-        // const load = async () => {
-        //     fetch(SERVER_API).then(e => {
-        //         let data = e.json();
-        //         data.then(x=>{
-        //             let keys = Object.keys(x);
-        //             let devs = [];
-        //             keys.forEach(k => { 
-        //                 let site = {
-        //                     name: k,
-        //                     addr: x[k],
-        //                     label: LABELS[k],
-        //                     latency: -1,
-        //                 };
-        //                 devs.push(site);
-        //             });
-        //          })
-        //     });
-        // }
-        // load();
-        //start timestamp
+        // TODO start timestamp for client side latency detection
+        // TODO move to configuration file
         let devs = [
         { name: 'ASABJ', addr: '109.244.15.243', 'label': 'Bei Jing', latency: -1, src: 'http://109.244.15.115:10000/Baidu-Logo.png' },
         { name: 'ASASH', addr: '43.254.46.136', 'label': 'Shang Hai', latency: -1, src: 'http://109.244.44.194:10000/Baidu-Logo.png' },
         { name: 'ASASZ', addr: '109.244.68.86', 'label': 'Shen Zhen', latency: -1, src: 'http://109.244.68.13:10000/Baidu-Logo.png' }]
 
+        console.log(new Date().getTime());
         setSite(devs);
     }, []);
 
+    // cross launch, popup the anyconnect connection window
     const connect = (company: any, username:any, password:any, addr:any)=>{
         let uri = `anyconnect://connect?host=${addr}&prefill_username=${username}@${company}&prefill_password=${password}`
         window.open(uri, '_blank');
@@ -47,10 +28,11 @@ export function useSiteSpeed() {
     }
 }
 
+// data structure
 export interface Site {
-    name: string,
-    addr: string,
-    label: string,
-    latency: number,
-    src: string
+    name: string, // site name
+    addr: string, // IP address
+    label: string, // site display name
+    latency: number, // latency from server to the site
+    src: string // resource can be downloaded from the site
 }

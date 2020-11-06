@@ -3,14 +3,14 @@ import {
     IonContent,
     IonHeader, IonPage, IonTitle,
     IonToolbar, IonButton, IonIcon, IonModal, IonButtons,
-    IonList, IonItem, IonLabel, IonInput, IonText, IonSelect, IonSelectOption, IonActionSheet, IonCard, IonCardContent,
-    IonBadge, IonFabButton, IonFab,
+    IonList, IonItem, IonLabel, IonInput, IonText, IonSelect, IonSelectOption, IonActionSheet,
+    IonBadge, IonFabButton, IonFab
 } from '@ionic/react';
-import {pin, wifi, wine, warning, walk, add, checkmark} from 'ionicons/icons';
+import {add, checkmark} from 'ionicons/icons';
 
 import './Admin.css';
 
-import {personAddOutline, closeOutline, trash, close, logoApple, server} from 'ionicons/icons';
+import {closeOutline, trash, close, logoApple, server} from 'ionicons/icons';
 import {useVpnList, Vpn} from '../hooks/useVpnList';
 import {useForm} from "react-hook-form";
 
@@ -26,8 +26,6 @@ const Tab1: React.FC = () => {
 
     let {vpnList, deleteVpn, addUser} = useVpnList();
     const [vpnToDelete, setVpnToDelete] = useState<Vpn>();
-
-
 
     const {handleSubmit, errors} = useForm({
         defaultValues: {...initialValues},
@@ -49,21 +47,9 @@ const Tab1: React.FC = () => {
     const companies_badge: any = {
         "apple":"light",
         "ibm":"primary",
-
     };
 
-
-
-    const formatData = (data:any)=>{
-    }
-
-
     const onSubmit = (data: any) => {
-        // setData(data);
-        // if (initialValues.password !== initialValues.confirmPassword) {
-        //   // control.set. = {message : 'Password mismatch!'}
-        // } else {
-        // }
         let vpn = {
             username: initialValues.username,
             password: initialValues.password,

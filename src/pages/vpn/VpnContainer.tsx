@@ -1,3 +1,4 @@
+/** @deprecated will be removed */
 import React from 'react';
 import { IonCol, IonGrid, IonRow, IonIcon, IonButton } from '@ionic/react';
 import { trashOutline } from 'ionicons/icons';

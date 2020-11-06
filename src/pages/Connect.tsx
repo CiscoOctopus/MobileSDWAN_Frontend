@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
     IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonLoading,
-    IonList, IonItem, IonLabel, IonInput, IonText, IonSelect, IonSelectOption, IonButton, IonImg, IonFabButton, IonFab,
+    IonList, IonItem, IonLabel, IonInput, IonText, IonSelect, IonSelectOption, IonImg, IonFabButton, IonFab,
     IonIcon
 } from '@ionic/react';
 import './Connect.css';
@@ -17,8 +17,9 @@ const Connect: React.FC = () => {
   const [showLoading, setShowLoading] = useState(true);
   //start timestamp
   let start = new Date().getTime();
-  let xx:any = [];
   let i = 3;
+  let ts = new Date().getTime();
+  console.log('==', ts);
   
   return (
     <IonPage>
@@ -28,6 +29,9 @@ const Connect: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
+        {site.map(e=> 
+          <img key={e.src} src={e.src + '?' + start} onLoad={() => console.log('+++', new Date().getTime() - start)}></img>
+        )}
         <IonLoading
           cssClass='my-custom-class'
           isOpen={showLoading}
@@ -37,8 +41,10 @@ const Connect: React.FC = () => {
         />
         { showLoading &&
           site.map((d, pos)=>
-          <IonImg key={d.name} src={d.src + '?' + start} onIonImgWillLoad={() => xx[pos] = new Date().getTime()} onIonImgDidLoad={ e=> {
-            let latency = new Date().getTime() - xx[pos];
+          <IonImg key={d.name} src={d.src + '?' + start} onIonImgWillLoad={() => d.latency = new Date().getTime()} onIonImgDidLoad={ e=> {
+            let ts2 = new Date().getTime();
+            let latency = ts2 - d.latency;
+            console.log(ts2, d.latency, ts, latency);
             d.latency = latency
             i -= 1
             if( i === 0) {
@@ -94,7 +100,7 @@ const Connect: React.FC = () => {
                 </IonItem>
               </IonList>
               <IonFab vertical="bottom" horizontal="end" slot="fixed">
-                <IonFabButton color="primary"  onClick={e=> connect(company, username, password, addr)}>
+                <IonFabButton color="primary" onClick={e=> connect(company, username, password, addr)}>
                   <IonIcon icon={arrowForward} />
                 </IonFabButton>
               </IonFab>
